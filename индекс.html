@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>FleeK - Доставка їжі</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #FFF9F2;
+            margin: 0;
+            padding: 20px;
+        }
+        .food-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #FF6B6B;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>FleeK - Доставка їжі</h1>
+    
+    <h2>Страви</h2>
+    <div id="menu"></div>
+    
+    <h2>Продукти</h2>
+    <div id="products"></div>
+
+    <script>
+        // Простые данные для проверки
+        const dishes = [
+            {id: 1, name: "Стейк", price: 350},
+            {id: 2, name: "Салат", price: 180}
+        ];
+        
+        const products = [
+            {id: 1, name: "Яблука", price: 45},
+            {id: 2, name: "Молоко", price: 40}
+        ];
+
+        // Функция отображения
+        function showItems(items, elementId) {
+            const container = document.getElementById(elementId);
+            items.forEach(item => {
+                container.innerHTML += `
+                    <div class="food-card">
+                        <h3>${item.name}</h3>
+                        <p>Ціна: ${item.price} грн</p>
+                        <button onclick="alert('Замовлено: ${item.name}')">Замовити</button>
+                    </div>
+                `;
+            });
+        }
+
+        // Загрузка при старте
+        window.onload = function() {
+            showItems(dishes, 'menu');
+            showItems(products, 'products');
+        };
+    </script>
+</body>
+</html>
